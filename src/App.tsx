@@ -19,11 +19,12 @@ function App() {
   return (
     <div className="card">
       <h3>C++ WebAssembly and React Starter App</h3>
-      <p>
-        <b>Message from C++:</b>
-        <br />
+      <hr></hr>
+      <b>Message from C++:</b>
+      <br />
+      <div className="highlight">
         {message}
-      </p>
+      </div>
       <button onClick={onClickBtn}>Load WASM</button>
     </div>
   )

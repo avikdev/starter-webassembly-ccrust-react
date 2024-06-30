@@ -21,4 +21,11 @@
     @apply bg-gray-200 dark:bg-gray-800;
     border-radius: 4px;
   }
+
+  .highlight {
+    @apply bg-yellow-600 bg-opacity-20 m-5 p-1;
+    border-radius: 3px;
+    border: 1px solid #555;
+
+  }
 }

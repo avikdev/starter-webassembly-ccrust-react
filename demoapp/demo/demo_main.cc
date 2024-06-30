@@ -10,19 +10,18 @@ class Greet {
 };
 
 std::string Greet::SayHello(const std::string &name) {
-    return "Hello, " + name + "!";
+  return "Greetings from C++, says hello " + name + " !";
 }
 
-std::string StartNewScene() {
+std::string DemoFunc()
+{
   // TODO: Sketch to json and return the JSON object.
   std::string uid = "s01";
-  printf("UUID = %s\n", uid.c_str());
   return uid;
 }
 
-
 void RegisterSceneModuleExports() {
-  ::emscripten::function("miroStartNewScene", &StartNewScene);
+  ::emscripten::function("DemoFunc", &DemoFunc);
 }
 
 EMSCRIPTEN_BINDINGS(Hello_World) {
@@ -34,6 +33,6 @@ EMSCRIPTEN_BINDINGS(Hello_World) {
 
 
 int main() {
-  printf("hello, world!\n");
+  printf("In C++ main!\n");
   return 0;
 }

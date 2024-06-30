@@ -35,14 +35,8 @@ cc_binary(
 wasm_cc_binary(
     name = "demo_wasm",
     cc_target = ":demo",
-    # outputs = [
-    #   "demo.wasm",
-    #   "demo.js",
-    # ],
+    outputs = [
+      "demo.wasm",
+      "demo.js",
+    ],
 )
-
-
-
-
-
-
