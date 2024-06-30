@@ -1,2 +1,4 @@
 # starter-emcc-react
- Starter app for Emscripten + React + Vite
+
+ Starter app for C++ WebAssembly (Emscripten) + React + Vite
+

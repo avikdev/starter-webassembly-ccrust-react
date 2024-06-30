@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    // Tailwind CSS.
+    "bradlc.vscode-tailwindcss",
+    // JS + Typescript
+    "ms-vscode.vscode-typescript-next",
+    // Tauri desktop app.
+    "tauri-apps.tauri-vscode",
+    // Rust (used in Tauri backend).
+    "rust-lang.rust-analyzer"
+  ]
+}

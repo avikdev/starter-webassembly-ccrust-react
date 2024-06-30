@@ -14,14 +14,14 @@ ENV PROTOC_VERSION=27.2
 
 # Install Bazel. This is taken from:
 # Ref: https://bazel.build/versions/6.0.0/install/ubuntu#add-dis-uri
-
-
 WORKDIR /tmp/install/bazel
 RUN wget https://github.com/bazelbuild/bazelisk/releases/download/v${BAZEL_VERSION}/bazelisk-linux-amd64
 RUN chmod a+x bazelisk-linux-amd64
 RUN sudo mv bazelisk-linux-amd64 /usr/local/bin/bazel
 RUN rm -frv /tmp/install/bazel
 RUN echo $(bazel --version)
+# Install typescript compiler globally, this is accessed by EMSDK when compiling with the "--emit-tsd" switch
+RUN npm install -g typescript
 
 
 # Install Protocol buffer compiler.
@@ -33,6 +33,7 @@ RUN rm -frv /tmp/install/pb
 
 # Add user.
 # Create the user
+RUN sudo adduser dev
 #RUN groupadd --gid $USER_GID $USERNAME \
     #&& useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
     #

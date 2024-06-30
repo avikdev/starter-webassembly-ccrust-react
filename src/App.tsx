@@ -1,25 +1,31 @@
 import { useState } from 'react';
+import wasmData from './webassembly/demo.wasm?url';
+import WasmModule from './webassembly/demo';
 import './App.css';
-import React from 'react';
+
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [message, setMessage] = useState<string>("-");
+
+  const onClickBtn = async () => {
+    const wasmMemory = await fetch(wasmData);
+    console.log(wasmMemory);
+    const mod = await WasmModule({
+      wasmMemory: await wasmMemory.arrayBuffer(),
+    });
+    setMessage(mod.Greet.SayHello("foo"));
+  };
 
   return (
-    <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Good Night.
+    <div className="card">
+      <h3>C++ WebAssembly and React Starter App</h3>
+      <p>
+        <b>Message from C++:</b>
+        <br />
+        {message}
       </p>
-    </>
+      <button onClick={onClickBtn}>Load WASM</button>
+    </div>
   )
 }
 

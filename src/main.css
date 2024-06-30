@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-white dark:bg-black text-black dark:text-white;
+  }
+
+  body {
+    @apply overflow-auto;
+    min-width: 100vw;
+    min-height: 100vh;
+  }
+
+  button {
+    @apply p-2 text-white;
+    background: linear-gradient(0deg, rgba(168,0,0,1) 0%, rgba(123,0,220,1) 100%);
+    border-radius: 4px;
+  }
+
+  a {
+    @apply p-2 font-bold;
+    @apply text-blue-900 dark:text-blue-300;
+  }
+}
