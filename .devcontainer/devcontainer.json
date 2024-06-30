@@ -1,0 +1,48 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+	"name": "React Wasm-CPP Dev",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": "."
+	},
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"ghcr.io/devcontainers/features/github-cli:1": {}
+		//"ghcr.io/devcontainers/features/rust:1": {},
+		//"ghcr.io/devcontainers/features/node:1": {
+		//	"version": "22.3.0"
+		//}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [8000],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "yarn install",
+
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				// Bazel build tool used in C++ codebase.
+				"bazelbuild.vscode-bazel",
+				"ms-azuretools.vscode-docker",
+				// Typescript and Javascipt support.
+				"ms-vscode.cpptools",
+				"ms-vscode.vscode-typescript-next",
+				"rust-lang.rust-analyzer",
+
+				// Vite + Tailwind, Tauri for desktop.
+				"antfu.vite",
+				"bradlc.vscode-tailwindcss",
+				"tauri-apps.tauri-vscode"
+			]
+		}
+	},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	"remoteUser": "root"
+}
