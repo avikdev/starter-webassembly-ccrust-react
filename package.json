@@ -8,11 +8,19 @@
     "email": "avikpauldev@gmail.com"
   },
   "scripts": {
-    "dev": "WATCHPACK_POLLING=true vite --open",
+    "tauri:dev": "npm run wasmcpp && npm run wasmrust -- --dev && npm run copy-wasm .env.tauri:dev && tauri dev",
+    "tauri:build": "npm run wasmcpp && npm run wasmrust -- --release && npm run copy-wasm .env.tauri:prod && tauri build",
+    "web:dev": "npm run wasmcpp && npm run wasmrust -- --dev && npm run copy-wasm .env.web:dev && npm run dev -- --mode=web:dev --open",
+    "web:build": "npm run wasmcpp && npm run wasmrust -- --release && npm run copy-wasm .env.web:prod && npm run build -- --mode=web:prod",
+    "web:preview": "vite preview --open",
+    "-": "echo '==================================================================='",
+    "dev": "vite --open",
     "build": "tsc -b && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "wasm": "bazel build //demoapp/demo:demo_wasm && cp bazel-bin/demoapp/demo/demo.* src/webassembly"
+    "wasmcpp": "bazel build //demoapp/demo:demo_wasm && cp bazel-bin/demoapp/demo/demo.* src/webassembly/cppwasm",
+    "wasmrust": "npx wasm-pack build src-rustwasm --target web --out-dir=../src/webassembly/rustwasm",
+    "copy-wasm": "node node-scripts/copy-wasm.mjs"
   },
   "dependencies": {
     "@tauri-apps/api": "^1.5.4",
@@ -31,8 +39,8 @@
     "@typescript-eslint/eslint-plugin": "^7.13.1",
     "@typescript-eslint/parser": "^7.13.1",
     "@vitejs/plugin-react": "^4.2.1",
-    "eslint": "^8.57.0",
     "dotenv": "^16.4.5",
+    "eslint": "^8.57.0",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.0.2",
     "vite": "^5.2.11",
